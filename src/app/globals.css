@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Audium Brand Colors */
+    --electric-purple: 262 83% 58%;
+    --deep-blue: 217 91% 40%;
+    --cyan-accent: 199 89% 48%;
+    --warm-orange: 20 91% 50%;
+    --success-green: 160 84% 39%;
+    --warning-amber: 32 95% 44%;
+    
+    /* Neutral System */
+    --pure-black: 0 0% 0%;
+    --rich-dark: 222 87% 11%;
+    --cool-gray-900: 210 20% 14%;
+    --cool-gray-700: 214 14% 32%;
+    --cool-gray-500: 220 9% 46%;
+    --cool-gray-300: 216 12% 84%;
+    --cool-gray-100: 220 14% 96%;
+    --pure-white: 0 0% 100%;
+    
+    /* Dark Theme Only */
+    --background: var(--pure-black);
+    --foreground: var(--pure-white);
+    --card: var(--cool-gray-900);
+    --card-foreground: var(--pure-white);
+    --primary: var(--electric-purple);
+    --primary-foreground: var(--pure-white);
+    --secondary: var(--cool-gray-800);
+    --secondary-foreground: var(--cool-gray-100);
+    --muted: var(--cool-gray-800);
+    --muted-foreground: var(--cool-gray-400);
+    --accent: var(--cyan-accent);
+    --accent-foreground: var(--pure-white);
+    --border: var(--cool-gray-700);
+    --input: var(--cool-gray-800);
+    --ring: var(--electric-purple);
+    --radius: 0.75rem;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-optical-sizing: auto;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
+  }
+}
+
+@layer components {
+  /* Minimal Glass Effects */
+  .glass-minimal {
+    @apply bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl;
+  }
+  
+  .glass-minimal-dark {
+    @apply bg-black/20 backdrop-blur-2xl border border-white/5 rounded-3xl;
+  }
+
+  /* Minimal Cards */
+  .card-minimal {
+    @apply bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border border-gray-200/50 dark:border-gray-700/50 rounded-3xl;
+  }
+
+  /* Waveform Patterns */
+  .waveform-minimal {
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(139, 92, 246, 0.03) 25%, 
+      rgba(139, 92, 246, 0.06) 50%, 
+      rgba(139, 92, 246, 0.03) 75%, 
+      transparent 100%);
+  }
+
+  .waveform-lines {
+    background-image: 
+      linear-gradient(90deg, transparent 0%, rgba(139, 92, 246, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, transparent 0%, rgba(139, 92, 246, 0.05) 2px, transparent 2px);
+    background-size: 40px 100%, 120px 100%;
+  }
+
+  /* Minimal Gradients */
+  .gradient-minimal {
+    background: linear-gradient(135deg, 
+      rgba(139, 92, 246, 0.1) 0%, 
+      rgba(59, 130, 246, 0.05) 50%, 
+      rgba(139, 92, 246, 0.1) 100%);
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-purple-600 via-blue-600 to-purple-600 bg-clip-text text-transparent;
+    background-size: 200% 100%;
+    animation: gradientFlow 8s ease-in-out infinite;
+  }
+
+  /* Minimal Buttons */
+  .btn-minimal {
+    @apply bg-black dark:bg-white text-white dark:text-black px-8 py-4 rounded-2xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-2xl;
+  }
+
+  .btn-outline-minimal {
+    @apply border-2 border-black dark:border-white text-black dark:text-white px-8 py-4 rounded-2xl font-medium transition-all duration-300 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black;
+  }
+
+  .btn-ghost-minimal {
+    @apply text-black dark:text-white px-8 py-4 rounded-2xl font-medium transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-800;
+  }
+
+  /* Audio Visual Elements */
+  .audio-bars {
+    display: flex;
+    align-items: end;
+    gap: 2px;
+    height: 40px;
+  }
+
+  .audio-bar {
+    background: linear-gradient(to top, #8b5cf6, #3b82f6);
+    width: 3px;
+    border-radius: 2px;
+    animation: audioWave 2s ease-in-out infinite;
+  }
+
+  .audio-bar:nth-child(2) { animation-delay: 0.1s; }
+  .audio-bar:nth-child(3) { animation-delay: 0.2s; }
+  .audio-bar:nth-child(4) { animation-delay: 0.3s; }
+  .audio-bar:nth-child(5) { animation-delay: 0.4s; }
+  .audio-bar:nth-child(6) { animation-delay: 0.5s; }
+  .audio-bar:nth-child(7) { animation-delay: 0.6s; }
+  .audio-bar:nth-child(8) { animation-delay: 0.7s; }
+
+  /* Minimal Typography */
+  .text-huge {
+    @apply text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight;
+  }
+
+  .text-display {
+    @apply text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Minimal Animations */
+@keyframes gradientFlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes audioWave {
+  0%, 100% {
+    height: 8px;
+    opacity: 0.3;
+  }
+  50% {
+    height: 32px;
+    opacity: 1;
+  }
+}
+
+@keyframes waveFlow {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.wave-flow {
+  animation: waveFlow 4s ease-in-out infinite;
+}
+
+.float-gentle {
+  animation: float 6s ease-in-out infinite;
+}
