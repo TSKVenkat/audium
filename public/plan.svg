@@ -1,0 +1,36 @@
+graph TD
+    A["🏠 User Lands on Homepage"] --> B["🔐 User Signs Up/Logs In"]
+    B --> C["📝 User Goes to Create Page"]
+    C --> D{"📄 Choose Input Type"}
+    
+    D -->|File Upload| E["📎 Upload PDF/DOCX/TXT/CSV"]
+    D -->|Text Input| F["✍️ Paste/Type Content"]
+    D -->|URL Input| G["🌐 Enter Website URL"]
+    
+    E --> H["🔄 File Processing via /api/upload"]
+    F --> I["📝 Direct Text Content"]
+    G --> J["🌐 Web Scraping via /api/scrape"]
+    
+    H --> K["🤖 AI Script Generation via /api/generate"]
+    I --> K
+    J --> K
+    
+    K --> L["📋 Generated Podcast Script"]
+    L --> M["🎙️ Process Page - TTS Generation"]
+    
+    M --> N["🔊 Audio Generation via /api/tts"]
+    N --> O["🎵 Audio Player & Download"]
+    
+    O --> P["💾 Save to MongoDB via /api/podcasts"]
+    P --> Q["📊 View in Dashboard & Analytics"]
+    
+    Q --> R["📈 Analytics Dashboard via /api/analytics"]
+    R --> S["📱 RSS Feed via /api/rss"]
+    
+    style A fill:#e1d5e7
+    style B fill:#d5e8d4
+    style C fill:#fff2cc
+    style K fill:#f8cecc
+    style N fill:#dae8fc
+    style P fill:#e1d5e7
+    style R fill:#d5e8d4
